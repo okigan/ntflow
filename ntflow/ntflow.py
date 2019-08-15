@@ -32,7 +32,6 @@ def fib(n, *args, **kwargs):
 
 
 def main():
-    a = 10
     b = 20
     z = yield from f(1)
     print(z)
@@ -63,9 +62,8 @@ def run(func):
             tid, v = requests.popitem()
             request = v[0]
             task = v[1]
-            # TODO: imagine this would be send of to remote instance,
-            # that would send back event when done, emulate with local execution
-            # for now and for debugging
+            # TODO: imagine this would be send of to remote instance, that
+            #  would send back event when done, emulate with local execution for now and for debugging
             method_to_call = globals()[request['func']]
             result = method_to_call(*request['args'], force_local=True, **request['kwargs'])
             for r in result:
